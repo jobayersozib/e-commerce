@@ -20,7 +20,6 @@ class Shop extends React.Component {
   render() {
     return (
       <div>
-        <h1>Shop page</h1>
         <div className="shop-page">
           {this.state.section.map(collection => {
             return (
