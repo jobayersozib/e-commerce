@@ -1,5 +1,7 @@
 import React from 'react';
+import {FormInput} from '../../FormInput/FormInput.component'
 import '../SignIn-SignUp.style.scss';
+import { CustomButton } from '../../CustomButton/CustomButton.component';
 
 class SignIn extends React.Component {
   constructor(props) {
@@ -10,39 +12,54 @@ class SignIn extends React.Component {
     };
   }
 
+
+  onChangeHandle=(e)=>{
+     console.log(e)
+  }
+
+  onSubmitHandle=(e)=>{
+     e.preventDefault();
+  }
+
   render() {
     return (
       <div className="sign-in">
         <h1>I already have an account</h1>
         <span>Sign in with your E-mail and password</span>
-        <div class="row">
-          <form class="col s6">
-            <div class="row">
-              <div class="input-field col s12">
-                <input type="email" name="" id="email" />
-                <label for="textarea1">E-mail</label>
-              </div>
+        <div className="row">
+        
+          <form onSubmit={(e)=>this.onSubmitHandle(e)} className="col s6">
+            <div className="row">
+              <FormInput label="E-mail" changeHandle={this.onChangeHandle} type="email" name="email" id="email" />
             </div>
-            <div class="row">
-              <div class="input-field col s12">
-                <input type="password" name="" id="password" />
-                <label for="password">Password</label>
-              </div>
+            <div className="row">
+                <FormInput label="Password" changeHandle={this.onChangeHandle} type="password" name="password" id="password" />
             </div>
-            <div class="row">
-              <div class="input-field col s12">
-                <button
-                  class="btn waves-effect waves-light"
-                  type="submit"
-                  name="action"
-                >
-                  LOGIN
-                  <i class="material-icons right"></i>
-                </button>
+            <div className="row">
+              <div className="input-field col s12">
+                <CustomButton type="submit">Log in</CustomButton>
               </div>
             </div>
           </form>
+
+          <form onSubmit={(e)=>this.onSubmitHandle(e)} className="col s6">
+            <div className="row">
+              <FormInput label="E-mail" changeHandle={this.onChangeHandle} type="email" name="email" id="email" />
+            </div>
+            <div className="row">
+                <FormInput label="Password" changeHandle={this.onChangeHandle} type="password" name="password" id="password" />
+            </div>
+            <div className="row">
+              <div className="input-field col s12">
+                <CustomButton type="submit">Log in</CustomButton>
+              </div>
+            </div>
+          </form>
+
+          
+
         </div>
+
       </div>
     );
   }
