@@ -17,9 +17,10 @@ const Header = props => {
         <Link className="option" to="/contact">
           CONTACT
         </Link>
-        <Link className="option" to="/signin">
+        {props.isSignedIn ? <div style={{cursor:"pointer"}} className="option">SIGN OUT</div>:  <Link className="option" to="/signin">
           SIGN IN
-        </Link>
+        </Link>}
+        
       </div>
     </div>
   );

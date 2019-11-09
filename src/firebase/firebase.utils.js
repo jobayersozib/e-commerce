@@ -24,9 +24,7 @@ const provider=new firebase.auth.GoogleAuthProvider();
 provider.setCustomParameters({prompt:'select_account'});
 
 
-export const signInWithGoogle=()=> auth.signInWithPopup(provider).then((res)=>{
-    console.log(res)
-})
+export const signInWithGoogle=()=>auth.signInWithPopup(provider)
 
 
 
