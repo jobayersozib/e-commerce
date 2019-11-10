@@ -4,7 +4,7 @@ import { Route } from 'react-router-dom';
 import Shop from './components/Shop/Shop.component';
 import { SignInSignUp } from './components/SignIn-SignUp/SignIn-SignUp.component';
 import Header from './components/Header/Header.component';
-import {auth} from '../src/firebase/firebase.utils'
+import {auth, createUserProfileDocument,firestore} from '../src/firebase/firebase.utils'
 import './App.css';
 
 const Hats = () => {
@@ -21,11 +21,27 @@ class App extends Component {
   componentDidMount(){
     auth.onAuthStateChanged((user)=>{
       if(user){
-        this.setState({userInfo:user})
-        console.log(user)
+        //this.setState({userInfo:user})
+        createUserProfileDocument(user,(userRef)=>{
+          userRef.onSnapshot(snap=>{
+            this.setState({userInfo:{
+              id:snap.id,
+              ...snap.data()
+            }},
+            ()=>{
+              firestore.collection('users').doc(this.state.userInfo.id).get().then(res=>{
+                console.log(res.data())
+              })
+              console.log(this.state)
+            }
+            )
+          
+          })
+        })
+        
       }else{
         this.setState({userInfo:null})
-        console.log("Not signed in");
+        console.log(this.state)
       }
       
     })
@@ -33,7 +49,7 @@ class App extends Component {
     
   }
 
-  componentWillMount(){
+  UNSAFE_componentWillMount(){
 
   }
 
