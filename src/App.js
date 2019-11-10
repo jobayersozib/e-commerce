@@ -24,6 +24,7 @@ class App extends Component {
         this.setState({userInfo:user})
         console.log(user)
       }else{
+        this.setState({userInfo:null})
         console.log("Not signed in");
       }
       

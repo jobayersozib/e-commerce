@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ReactComponent as Logo } from '../../assets/logo.svg';
-
 import './Header.style.scss';
+import { auth } from '../../firebase/firebase.utils';
 
 const Header = props => {
   return (
@@ -17,7 +17,7 @@ const Header = props => {
         <Link className="option" to="/contact">
           CONTACT
         </Link>
-        {props.isSignedIn ? <div style={{cursor:"pointer"}} className="option">SIGN OUT</div>:  <Link className="option" to="/signin">
+        {props.isSignedIn ? <div style={{cursor:"pointer"}} onClick={(e)=>auth.signOut()} className="option">SIGN OUT</div>:  <Link className="option" to="/signin">
           SIGN IN
         </Link>}
         
