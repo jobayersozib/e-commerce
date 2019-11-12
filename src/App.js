@@ -4,6 +4,8 @@ import { Route } from "react-router-dom";
 import Shop from "./components/Shop/Shop.component";
 import { SignInSignUp } from "./components/SignIn-SignUp/SignIn-SignUp.component";
 import Header from "./components/Header/Header.component";
+import { connect } from "react-redux";
+import { setUserState } from "./redux/actions/user.action";
 import {
   auth,
   createUserProfileDocument,
@@ -28,29 +30,34 @@ class App extends Component {
         console.log(this.state.userInfo);
         createUserProfileDocument(user, userRef => {
           userRef.onSnapshot(snap => {
-            this.setState(
-              {
-                userInfo: {
-                  id: snap.id,
-                  ...snap.data()
-                }
-              },
-              () => {
-                firestore
-                  .collection("users")
-                  .doc(this.state.userInfo.id)
-                  .get()
-                  .then(res => {
-                    console.log(res.data());
-                  });
-                console.log(this.state);
+            this.props.setUserState({
+              userInfo: {
+                id: snap.id,
+                ...snap.data()
               }
-            );
+            });
+            // this.setState(
+            //   {
+            //     userInfo: {
+            //       id: snap.id,
+            //       ...snap.data()
+            //     }
+            //   },
+            //   () => {
+            //     firestore
+            //       .collection("users")
+            //       .doc(this.state.userInfo.id)
+            //       .get()
+            //       .then(res => {
+            //         console.log(res.data());
+            //       });
+            //     console.log(this.state);
+            //   }
+            // );
           });
         });
       } else {
-        this.setState({ userInfo: null });
-        console.log(this.state);
+        this.props.setUserState(null);
       }
     });
   }
@@ -72,4 +79,8 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapsdispatchToprops = dispatch => ({
+  setUserState: user => dispatch(setUserState(user))
+});
+
+export default connect(null, mapsdispatchToprops)(App);

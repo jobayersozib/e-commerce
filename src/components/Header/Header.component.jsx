@@ -19,7 +19,7 @@ const Header = props => {
         <Link className="option" to="/contact">
           CONTACT
         </Link>
-        {props.isSignedIn ? (
+        {props.currentUser ? (
           <div
             style={{ cursor: "pointer" }}
             onClick={e => auth.signOut()}
