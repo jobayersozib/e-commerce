@@ -86,3 +86,7 @@ const mapsdispatchToprops = dispatch => ({
 // Push commit for tempbranch
 
 export default connect(null, mapsdispatchToprops)(App);
+
+function test() {
+  console.log("Helow");
+}
