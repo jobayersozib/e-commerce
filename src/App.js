@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Homepage } from "./components/Homepage/Homepage";
-import { Route } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
 import Shop from "./components/Shop/Shop.component";
 import { SignInSignUp } from "./components/SignIn-SignUp/SignIn-SignUp.component";
 import Header from "./components/Header/Header.component";
@@ -65,6 +65,7 @@ class App extends Component {
   UNSAFE_componentWillMount() {}
 
   render() {
+    console.log(this.props.currentUser.currentUser);
     return (
       <div>
         <Header />
@@ -72,7 +73,17 @@ class App extends Component {
           <Route exact path="/" component={Homepage} />
           <Route exact path="/hats" component={Hats} />
           <Route exact path="/shop" component={Shop} />
-          <Route exact path="/signin" component={SignInSignUp} />
+          <Route
+            exact
+            path="/signin"
+            render={() =>
+              this.props.currentUser.currentUser != null ? (
+                <Redirect to="/" />
+              ) : (
+                <SignInSignUp />
+              )
+            }
+          />
         </div>
       </div>
     );
@@ -83,4 +94,9 @@ const mapsdispatchToprops = dispatch => ({
   setUserState: user => dispatch(setUserState(user))
 });
 
-export default connect(null, mapsdispatchToprops)(App);
+export default connect(
+  state => ({
+    currentUser: state.user
+  }),
+  mapsdispatchToprops
+)(App);
