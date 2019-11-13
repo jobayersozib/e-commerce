@@ -1,8 +1,9 @@
-import React from 'react';
-import SHOP_DATA from './ShopData';
-import { withRouter } from 'react-router-dom';
-import Collectionpreview from './Collection-preview/Collection.component';
-import './Shop.style.scss';
+import React from "react";
+import SHOP_DATA from "./ShopData";
+import { withRouter } from "react-router-dom";
+import { connect } from "react-redux";
+import Collectionpreview from "./Collection-preview/Collection.component";
+import "./Shop.style.scss";
 
 class Shop extends React.Component {
   constructor(props) {
@@ -17,9 +18,21 @@ class Shop extends React.Component {
     console.log(this.state.section);
   }
 
+  displayLoggedInName = () => {
+    if (this.props.state.user.currentUser != null) {
+      return (
+        <h5>
+          Logged in as:&nbsp;
+          {this.props.state.user.currentUser.userInfo.displayName}
+        </h5>
+      );
+    }
+  };
+
   render() {
     return (
       <div>
+        {this.displayLoggedInName()}
         <div className="shop-page">
           {this.state.section.map(collection => {
             return (
@@ -36,4 +49,8 @@ class Shop extends React.Component {
   }
 }
 
-export default withRouter(Shop);
+const stateMapsToProps = state => ({
+  state: state
+});
+
+export default connect(stateMapsToProps, null)(withRouter(Shop));
