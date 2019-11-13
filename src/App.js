@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Homepage } from "./components/Homepage/Homepage";
 import { Route, Redirect } from "react-router-dom";
 import Shop from "./components/Shop/Shop.component";
+import test from "./components/Shop/Shop.component";
 import { SignInSignUp } from "./components/SignIn-SignUp/SignIn-SignUp.component";
 import Header from "./components/Header/Header.component";
 import { connect } from "react-redux";
@@ -65,7 +66,6 @@ class App extends Component {
   UNSAFE_componentWillMount() {}
 
   render() {
-    console.log(this.props.currentUser.currentUser);
     return (
       <div>
         <Header />
