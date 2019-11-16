@@ -1,13 +1,19 @@
 import React from "react";
 import { CustomButton } from "../CustomButton/CustomButton.component";
 import { connect } from "react-redux";
+import CartItemList from "../cartItemList/Cart-item-list.component";
 import "./cart-dropdown.style.scss";
 
-function renderDropDown(payload) {
+const renderDropDown = payload => {
   if (payload === "") {
     return (
       <div className="cart-dropdown">
-        <div className="cart-items" style={{ overflowX: "hidden" }}></div>
+        <div className="cart-items" style={{ overflowX: "hidden" }}>
+          <CartItemList />
+          <CartItemList />
+          <CartItemList />
+          <CartItemList />
+        </div>
         <CustomButton>GO TO CHECKOUT</CustomButton>
       </div>
     );
@@ -19,7 +25,7 @@ function renderDropDown(payload) {
       ></div>
     );
   }
-}
+};
 
 const CartDropdown = props => {
   console.log(props.state.cartContainer.state.payload);
