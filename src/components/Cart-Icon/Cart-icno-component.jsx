@@ -19,6 +19,21 @@ class CartIcon extends React.Component {
       });
     }
   };
+
+  mouseClickhandler = () => {
+    if (this.props.state.cartContainer.state.payload !== "") {
+      this.props.cartContainerState({
+        type: cartContainerHideOrShow,
+        payload: ""
+      });
+    } else {
+      this.props.cartContainerState({
+        type: cartContainerHideOrShow,
+        payload: "display:none"
+      });
+    }
+  };
+
   mouseOverOutHandler = () => {
     this.props.cartContainerState({
       type: cartContainerHideOrShow,
@@ -28,11 +43,7 @@ class CartIcon extends React.Component {
 
   render() {
     return (
-      <div
-        onMouseOver={this.mouseOverhandler}
-        onMouseOut={this.mouseOverOutHandler}
-        className="cart-icon"
-      >
+      <div onClick={this.mouseClickhandler} className="cart-icon">
         <ShoppingBag className="shopping-icon" />
         <span className="item-count">0</span>
       </div>
