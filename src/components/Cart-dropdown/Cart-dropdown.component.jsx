@@ -33,46 +33,12 @@ class CartDropdown extends React.Component {
     super(props);
   }
   componentDidMount() {
-    // this.props.setCartItems({
-    //   productId: 2,
-    //   productName: "Product name2",
-    //   productUrl: ""
-    // });
+    this.props.setCartItems({
+      productId: 2,
+      productName: "Product name2",
+      productUrl: ""
+    });
     console.log(this.props);
-
-    this.props.dispatch({
-      type: "CART_ITEM_LIST",
-      payload: {
-        productId: 3,
-        productName: "Product name 3",
-        productUrl: ""
-      }
-    });
-    this.props.dispatch({
-      type: "CART_ITEM_LIST",
-      payload: {
-        productId: 2,
-        productName: "Product name 2",
-        productUrl: ""
-      }
-    });
-    this.props.dispatch({
-      type: "CART_ITEM_LIST",
-      payload: {
-        productId: 1,
-        productName: "Product name 1",
-        productUrl: ""
-      }
-    });
-
-    // this.props.dispatch({
-    //   type: "CART_ITEM_LIST",
-    //   payload: {
-    //     productId: 3,
-    //     productName: "Product name 3",
-    //     productUrl: ""
-    //   }
-    // });
   }
 
   render() {
@@ -84,4 +50,7 @@ const stateDispatchToprops = dispatch => ({
   setCartItems: state => dispatch(cartItems(state))
 });
 
-export default connect(state => ({ state: state }), null)(CartDropdown);
+export default connect(
+  state => ({ state: state }),
+  stateDispatchToprops
+)(CartDropdown);

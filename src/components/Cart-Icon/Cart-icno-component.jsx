@@ -45,7 +45,9 @@ class CartIcon extends React.Component {
     return (
       <div onClick={this.mouseClickhandler} className="cart-icon">
         <ShoppingBag className="shopping-icon" />
-        <span className="item-count">0</span>
+        <span className="item-count">
+          {this.props.state.cartItemList.length}
+        </span>
       </div>
     );
   }
