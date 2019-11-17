@@ -4,7 +4,8 @@ const INITIAL_STATE = [
   {
     productId: 3,
     productName: "Product name 3",
-    productUrl: ""
+    productUrl: "",
+    imageUrl: "https://via.placeholder.com/600/92c952"
   }
 ];
 
