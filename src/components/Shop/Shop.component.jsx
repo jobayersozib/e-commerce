@@ -3,6 +3,8 @@ import SHOP_DATA from "./ShopData";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import Collectionpreview from "./Collection-preview/Collection.component";
+import { CustomButton } from "../CustomButton/CustomButton.component";
+import { cartItems } from "../../redux/actions/cartItem.action";
 import "./Shop.style.scss";
 
 class Shop extends React.Component {
@@ -29,10 +31,22 @@ class Shop extends React.Component {
     }
   };
 
+  addTocartHandler = e => {
+    this.props.addItemToCart({
+      productId: 2,
+      productName: "Product name 2",
+      productUrl: "",
+      imageUrl: "https://via.placeholder.com/600/771796"
+    });
+  };
+
   render() {
     return (
       <div>
         {this.displayLoggedInName()}
+        <CustomButton onClick={e => this.addTocartHandler()} type="submit">
+          ADD TO CART
+        </CustomButton>
         <div className="shop-page">
           {this.state.section.map(collection => {
             return (
@@ -53,4 +67,8 @@ const stateMapsToProps = state => ({
   state: state
 });
 
-export default connect(stateMapsToProps, null)(withRouter(Shop));
+const dispatchMapsToProps = dispatch => ({
+  addItemToCart: data => dispatch(cartItems(data))
+});
+
+export default connect(stateMapsToProps, dispatchMapsToProps)(withRouter(Shop));
