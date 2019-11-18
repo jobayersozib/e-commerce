@@ -2,6 +2,10 @@ import React from "react";
 import { CustomButton } from "../../../CustomButton/CustomButton.component";
 import "./Collection-items.style.scss";
 
+const addToCart = productId => {
+  console.log(productId);
+};
+
 const CollectionItem = ({ item }) => {
   return (
     <div className="collection-item">
@@ -14,7 +18,9 @@ const CollectionItem = ({ item }) => {
         <span className="price">${item.price}</span>
       </div>
       <div className="make-btn-center">
-        <CustomButton>ADD TO CART</CustomButton>
+        <CustomButton onClick={e => addToCart(item.id)}>
+          ADD TO CART
+        </CustomButton>
       </div>
     </div>
   );

@@ -30,8 +30,28 @@
       width: 10%;
     }
   }
+  &:hover {
+    cursor: pointer;
+    opacity: 0.9;
+    .make-btn-center {
+      display: block;
+    }
+  }
+
   .make-btn-center {
     position: absolute;
     align-items: center;
+    top: 70%;
+    opacity: 0.8;
+    display: none;
+
+    button {
+      background-color: white;
+      color: black;
+      &:hover {
+        background-color: black;
+        color: white;
+      }
+    }
   }
 }
