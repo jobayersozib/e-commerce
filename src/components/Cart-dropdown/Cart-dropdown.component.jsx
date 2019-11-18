@@ -34,18 +34,18 @@ class CartDropdown extends React.Component {
     super(props);
   }
   componentDidMount() {
-    this.props.setCartItems({
-      productId: 2,
-      productName: "Product name 2",
-      productUrl: "",
-      imageUrl: "https://via.placeholder.com/600/771796"
-    });
-    this.props.setCartItems({
-      productId: 3,
-      productName: "Product name 3",
-      productUrl: "",
-      imageUrl: "https://via.placeholder.com/600/24f355"
-    });
+    // this.props.setCartItems({
+    //   id: 2,
+    //   name: "Product name 2",
+    //   productUrl: "",
+    //   imageUrl: "https://via.placeholder.com/600/771796"
+    // });
+    // this.props.setCartItems({
+    //   productId: 3,
+    //   productName: "Product name 3",
+    //   productUrl: "",
+    //   imageUrl: "https://via.placeholder.com/600/24f355"
+    // });
   }
 
   render() {
