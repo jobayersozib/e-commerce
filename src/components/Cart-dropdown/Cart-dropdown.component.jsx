@@ -12,7 +12,7 @@ const renderDropDown = (payload, cartData) => {
       <div className="cart-dropdown">
         <div className="cart-items" style={{ overflowX: "hidden" }}>
           {cartData.map(data => {
-            return <CartItemList imageUrl={data.imageUrl} />;
+            return <CartItemList data={data} />;
           })}
         </div>
 
@@ -33,20 +33,7 @@ class CartDropdown extends React.Component {
   constructor(props) {
     super(props);
   }
-  componentDidMount() {
-    // this.props.setCartItems({
-    //   id: 2,
-    //   name: "Product name 2",
-    //   productUrl: "",
-    //   imageUrl: "https://via.placeholder.com/600/771796"
-    // });
-    // this.props.setCartItems({
-    //   productId: 3,
-    //   productName: "Product name 3",
-    //   productUrl: "",
-    //   imageUrl: "https://via.placeholder.com/600/24f355"
-    // });
-  }
+  componentDidMount() {}
 
   render() {
     return renderDropDown(
