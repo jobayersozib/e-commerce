@@ -3,7 +3,6 @@ import SHOP_DATA from "./ShopData";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import Collectionpreview from "./Collection-preview/Collection.component";
-import { CustomButton } from "../CustomButton/CustomButton.component";
 import { cartItems } from "../../redux/actions/cartItem.action";
 import "./Shop.style.scss";
 
@@ -44,9 +43,6 @@ class Shop extends React.Component {
     return (
       <div>
         {this.displayLoggedInName()}
-        <CustomButton onClick={e => this.addTocartHandler()} type="submit">
-          ADD TO CART
-        </CustomButton>
         <div className="shop-page">
           {this.state.section.map(collection => {
             return (
