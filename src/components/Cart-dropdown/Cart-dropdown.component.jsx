@@ -1,6 +1,8 @@
 import React from "react";
 import { CustomButton } from "../CustomButton/CustomButton.component";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+
 import CartItemList from "../cartItemList/Cart-item-list.component";
 import { cartItems } from "../../redux/actions/cartItem.action";
 import "./cart-dropdown.style.scss";
@@ -16,7 +18,9 @@ const renderDropDown = (payload, cartData) => {
           })}
         </div>
 
-        <CustomButton>GO TO CHECKOUT</CustomButton>
+        <Link exact="true" to="/checkout">
+          <CustomButton>GO TO CHECKOUT</CustomButton>
+        </Link>
       </div>
     );
   } else {

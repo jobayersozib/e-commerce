@@ -35,6 +35,7 @@ class Shop extends React.Component {
       productId: 2,
       productName: "Product name 2",
       productUrl: "",
+      quantity: 1,
       imageUrl: "https://via.placeholder.com/600/771796"
     });
   };
