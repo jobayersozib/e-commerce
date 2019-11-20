@@ -4,6 +4,7 @@ import "./Collection-items.style.scss";
 import { connect } from "react-redux";
 import shopData from "../../ShopData";
 import { cartItems } from "../../../../redux/actions/cartItem.action";
+import {cartItemsSelector} from '../../../../redux/selector/cart.selector'
 
 class CollectionItem extends React.Component {
   constructor(props) {
@@ -58,7 +59,7 @@ class CollectionItem extends React.Component {
 }
 
 const stateMapsToprops = state => ({
-  cartdata: state.cartItemList
+  cartdata: cartItemsSelector(state)
 });
 const dispatchMapsToprops = dispatch => ({
   addProductTocart: productdata => dispatch(cartItems(productdata))
