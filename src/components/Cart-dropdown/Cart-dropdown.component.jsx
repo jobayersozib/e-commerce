@@ -13,9 +13,13 @@ const renderDropDown = (payload, cartData) => {
     return (
       <div className="cart-dropdown">
         <div className="cart-items" style={{ overflowX: "hidden" }}>
-          {cartData.map(data => {
-            return <CartItemList data={data} />;
-          })}
+          {cartData.length > 0 ? (
+            cartData.map(data => {
+              return <CartItemList data={data} />;
+            })
+          ) : (
+            <span className="empty-message">Cart is empty</span>
+          )}
         </div>
 
         <Link exact="true" to="/checkout">
