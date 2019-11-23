@@ -4,6 +4,7 @@ import "./Collection-items.style.scss";
 import { connect } from "react-redux";
 import shopData from "../../ShopData";
 import { cartItems } from "../../../../redux/actions/cartItem.action";
+import {cartItemIncrementAction} from '../../../../redux/actions/cartContainerAction'
 import { cartItemsSelector } from "../../../../redux/selector/cart.selector";
 
 class CollectionItem extends React.Component {
@@ -17,12 +18,8 @@ class CollectionItem extends React.Component {
         if (productId == shopData[data].items[product].id) {
           for (var i = 0; i < this.props.cartdata.length; i++) {
             if (this.props.cartdata[i].id == productId) {
-              let increaseQuantity = this.props.cartdata[i].quantity;
-              window._.remove(this.props.cartdata, function(n) {
-                return n.id == productId;
-              });
-              shopData[data].items[product].quantity = ++increaseQuantity;
-              this.props.addProductTocart(shopData[data].items[product]);
+              this.props.cartdata[i].quantity++;
+              this.props.incrementProductQuantity(this.props.cartdata);
               return;
             }
           }
@@ -65,7 +62,8 @@ const stateMapsToprops = state => {
   };
 };
 const dispatchMapsToprops = dispatch => ({
-  addProductTocart: productdata => dispatch(cartItems(productdata))
+  addProductTocart: productdata => dispatch(cartItems(productdata)),
+  incrementProductQuantity:(cartData)=>dispatch(cartItemIncrementAction(cartData))
 });
 
 export default connect(stateMapsToprops, dispatchMapsToprops)(CollectionItem);

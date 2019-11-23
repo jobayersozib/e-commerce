@@ -21,7 +21,7 @@ class CartIcon extends React.Component {
   };
 
   mouseClickhandler = () => {
-    console.log(window._.defaults({ a: 1 }, { a: 3, b: 2 }));
+    
     if (this.props.state.cartContainer.state.payload !== "") {
       this.props.cartContainerState({
         type: cartContainerHideOrShow,

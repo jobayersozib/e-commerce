@@ -38,9 +38,7 @@ const renderDropDown = (payload, cartData) => {
 };
 
 class CartDropdown extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+  
   componentDidMount() {}
 
   render() {

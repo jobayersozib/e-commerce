@@ -1,4 +1,4 @@
-import { cartItemLists } from "../../actions/action.types";
+import { cartItemLists ,cartItemIncrement} from "../../actions/action.types";
 
 const INITIAL_STATE = [
   // {
@@ -13,7 +13,8 @@ const cartItemList = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case cartItemLists:
       return [...state, action.payload];
-
+    case cartItemIncrement:
+        return [...action.payload]
     default:
       return state;
   }

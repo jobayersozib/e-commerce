@@ -3,8 +3,7 @@ import { FormInput } from '../../FormInput/FormInput.component';
 import { CustomButton } from '../../CustomButton/CustomButton.component';
 import {
   auth,
-  createUserProfileDocument,
-  firestore
+  
 } from '../../../firebase/firebase.utils';
 import './SignUp.style.scss';
 
