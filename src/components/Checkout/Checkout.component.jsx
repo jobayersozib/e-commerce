@@ -9,6 +9,7 @@ class Checkout extends React.Component {
   }
 
   render() {
+    console.log(this.props.cartItems);
     return (
       <div className="checkout-page">
         <div className="checkout-header">
@@ -28,7 +29,10 @@ class Checkout extends React.Component {
             <span>Remove</span>
           </div>
         </div>
-        <CheckoutItem />
+        {this.props.cartItems.map(data => {
+          return <CheckoutItem key={data.id} data={data} />;
+        })}
+
         <div className="total">TOTAL: $100</div>
       </div>
     );
@@ -36,5 +40,5 @@ class Checkout extends React.Component {
 }
 
 export default connect(state => ({
-  state: state
+  cartItems: state.cartItemList
 }))(Checkout);
