@@ -38,10 +38,10 @@ const renderDropDown = (payload, cartData) => {
 };
 
 class CartDropdown extends React.Component {
-  
   componentDidMount() {}
 
   render() {
+    console.log(this.props);
     return renderDropDown(
       this.props.state.cartContainer.state.payload,
       this.props.state.cartItemList

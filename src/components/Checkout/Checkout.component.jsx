@@ -1,15 +1,26 @@
 import React from "react";
 import "./Checkout.style.scss";
 import { connect } from "react-redux";
+import cartContainerState from "../../redux/actions/cartContainerAction";
 import CheckoutItem from "../Checkout/CheckoutItem/CheckoutItem.component";
+import { cartContainerHideOrShow } from "../../redux/actions/action.types";
 
 class Checkout extends React.Component {
   constructor(props) {
     super(props);
   }
+  componentDidMount() {
+    this.props.dispatch(cartContainerState());
+  }
+  calculateTotal() {
+    let total = 0;
+    for (var i = 0; i < this.props.cartItems.length; i++) {
+      total += this.props.cartItems[i].quantity * this.props.cartItems[i].price;
+    }
 
+    return total;
+  }
   render() {
-    console.log(this.props.cartItems);
     return (
       <div className="checkout-page">
         <div className="checkout-header">
@@ -33,7 +44,7 @@ class Checkout extends React.Component {
           return <CheckoutItem key={data.id} data={data} />;
         })}
 
-        <div className="total">TOTAL: $100</div>
+        <div className="total">TOTAL: ${this.calculateTotal()}</div>
       </div>
     );
   }
