@@ -7,7 +7,8 @@ import rootReducer from "./reducers/root.reducer";
 const middlewares = [logger];
 const persistConfig = {
   key: "root",
-  storage
+  storage,
+  whitelist: ["cartItemList"]
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
