@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Homepage } from "./components/Homepage/Homepage";
 import { Route, Redirect } from "react-router-dom";
 import Shop from "./components/Shop/Shop.component";
-import test from "./components/Shop/Shop.component";
+
 import { SignInSignUp } from "./components/SignIn-SignUp/SignIn-SignUp.component";
 import Header from "./components/Header/Header.component";
 import { connect } from "react-redux";
@@ -11,7 +11,7 @@ import { setUserState } from "./redux/actions/user.action";
 import {
   auth,
   createUserProfileDocument,
-  firestore
+  
 } from "../src/firebase/firebase.utils";
 import "./App.css";
 

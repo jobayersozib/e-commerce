@@ -7,22 +7,7 @@ import {
 } from '../../../firebase/firebase.utils';
 import './SignUp.style.scss';
 
-var actionCodeSettings = {
-  // URL you want to redirect back to. The domain (www.example.com) for this
-  // URL must be whitelisted in the Firebase Console.
-  url: 'localhost:3000',
-  // This must be true.
-  handleCodeInApp: true,
-  iOS: {
-    bundleId: 'com.example.ios'
-  },
-  android: {
-    packageName: 'com.example.android',
-    installApp: true,
-    minimumVersion: '12'
-  },
-  dynamicLinkDomain: 'example.page.link'
-};
+
 
 class SignUpForm extends React.Component {
   constructor(props) {
@@ -43,7 +28,7 @@ class SignUpForm extends React.Component {
     e.preventDefault();
 
     let displayName = e.target.displayname.value;
-    let email = e.target.email.value;
+    
 
     if (e.target.password.value !== e.target.confirmpassword.value) {
       alert("Password doesn't matched");

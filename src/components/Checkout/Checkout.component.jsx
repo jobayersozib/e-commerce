@@ -3,12 +3,10 @@ import "./Checkout.style.scss";
 import { connect } from "react-redux";
 import cartContainerState from "../../redux/actions/cartContainerAction";
 import CheckoutItem from "../Checkout/CheckoutItem/CheckoutItem.component";
-import { cartContainerHideOrShow } from "../../redux/actions/action.types";
+
 
 class Checkout extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+  
   componentDidMount() {
     this.props.dispatch(cartContainerState());
   }
