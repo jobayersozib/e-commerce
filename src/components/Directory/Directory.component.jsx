@@ -16,9 +16,9 @@ class Directory extends React.Component {
           return (
             <MenuItem
               key={data.id}
-              imageUrl={data.imageUrl}
+              imageUrl={data.items[2].imageUrl}
               title={data.title}
-              linkUrl={data.linkUrl}
+              linkUrl={data.routeName}
               size={data.size}
             />
           );

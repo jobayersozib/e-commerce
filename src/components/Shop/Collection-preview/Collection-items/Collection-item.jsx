@@ -35,6 +35,7 @@ class CollectionItem extends React.Component {
   }
 
   render() {
+    console.log(this.props.item)
     return (
       <div className="collection-item">
         <div
@@ -56,8 +57,8 @@ class CollectionItem extends React.Component {
 }
 
 const stateMapsToprops = state => {
-  console.log("Rendered ");
-  return {
+  
+return {
     cartdata: cartItemsSelector(state)
   };
 };
