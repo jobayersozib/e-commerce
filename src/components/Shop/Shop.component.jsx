@@ -1,11 +1,12 @@
 import React from "react";
-import SHOP_DATA from "./ShopData";
-import { withRouter } from "react-router-dom";
+
+import { Route , withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import Collectionoverview from "./Collection-preview/Collection.component";
 import { cartItems } from "../../redux/actions/cartItem.action";
 
 import "./Shop.style.scss";
+import Singleitem from "./Singleitem/Singleitem.component";
 
 class Shop extends React.Component {
   constructor(props) {
@@ -44,7 +45,9 @@ class Shop extends React.Component {
     return (
       <div>
         {this.displayLoggedInName()}
-        <Collectionoverview/>
+        <Route exact path={`${this.props.match.path}/:categoryID`} component={Singleitem}/>
+        <Route exact path={`${this.props.match.path}`} component={Collectionoverview}/>
+        
       </div>
     );
   }

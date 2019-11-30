@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Homepage } from "./components/Homepage/Homepage";
 import { Route, Redirect } from "react-router-dom";
 import Shop from "./components/Shop/Shop.component";
-
 import { SignInSignUp } from "./components/SignIn-SignUp/SignIn-SignUp.component";
 import Header from "./components/Header/Header.component";
 import { connect } from "react-redux";
@@ -72,8 +71,9 @@ class App extends Component {
         <Header />
         <div className="App">
           <Route exact path="/" component={Homepage} />
-          <Route exact path="/hats" component={Hats} />
-          <Route exact path="/shop" component={Shop} />
+          {/* <Route exact path="/hats" component={Hats} /> */}
+          <Route  path="/shop" component={Shop} />
+          
           <Route exact path="/checkout" component={CheckoutPage} />
           <Route
             exact
