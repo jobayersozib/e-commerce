@@ -18,10 +18,10 @@ class Paymentform extends React.Component {
     };
 
     // Create an instance of the card Element.
-    var card = StripeElements.create("card", { style: style });
-
-    // Add an instance of the card Element into the `card-element` <div>.
-    card.mount("#card-element");
+    if (document.getElementById("card") == null) {
+      let card = StripeElements.create("card", { style: style });
+      card.mount("#card-element");
+    }
   }
   render() {
     return (

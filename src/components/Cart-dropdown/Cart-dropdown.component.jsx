@@ -22,9 +22,12 @@ const renderDropDown = (payload, cartData) => {
           )}
         </div>
 
-        <Link exact="true" to="/checkout">
+        {/* <Link exact="true" to="/checkout">
           <CustomButton>GO TO CHECKOUT</CustomButton>
-        </Link>
+        </Link> */}
+        <a href="/checkout">
+          <CustomButton>GO TO CHECKOUT</CustomButton>
+        </a>
       </div>
     );
   } else {
