@@ -9,8 +9,7 @@ import CheckoutPage from "./components/Checkout/Checkout.component";
 import { setUserState } from "./redux/actions/user.action";
 import {
   auth,
-  createUserProfileDocument,
-  
+  createUserProfileDocument
 } from "../src/firebase/firebase.utils";
 import "./App.css";
 
@@ -25,38 +24,44 @@ class App extends Component {
   }
 
   componentDidMount() {
+    console.log(this.state);
     auth.onAuthStateChanged(user => {
       if (user) {
         this.setState({ userInfo: user });
-        console.log(this.state.userInfo);
-        createUserProfileDocument(user, userRef => {
-          userRef.onSnapshot(snap => {
-            this.props.setUserState({
-              userInfo: {
-                id: snap.id,
-                ...snap.data()
-              }
-            });
-            // this.setState(
-            //   {
-            //     userInfo: {
-            //       id: snap.id,
-            //       ...snap.data()
-            //     }
-            //   },
-            //   () => {
-            //     firestore
-            //       .collection("users")
-            //       .doc(this.state.userInfo.id)
-            //       .get()
-            //       .then(res => {
-            //         console.log(res.data());
-            //       });
-            //     console.log(this.state);
-            //   }
-            // );
-          });
+        this.props.setUserState({
+          userInfo: {
+            id: user.uid,
+            ...user
+          }
         });
+        // createUserProfileDocument(user, userRef => {
+        //   userRef.onSnapshot(snap => {
+        //     this.props.setUserState({
+        //       userInfo: {
+        //         id: snap.id,
+        //         ...snap.data()
+        //       }
+        //     });
+        //     // this.setState(
+        //     //   {
+        //     //     userInfo: {
+        //     //       id: snap.id,
+        //     //       ...snap.data()
+        //     //     }
+        //     //   },
+        //     //   () => {
+        //     //     firestore
+        //     //       .collection("users")
+        //     //       .doc(this.state.userInfo.id)
+        //     //       .get()
+        //     //       .then(res => {
+        //     //         console.log(res.data());
+        //     //       });
+        //     //     console.log(this.state);
+        //     //   }
+        //     // );
+        //   });
+        // });
       } else {
         this.props.setUserState(null);
       }
@@ -72,8 +77,8 @@ class App extends Component {
         <div className="App">
           <Route exact path="/" component={Homepage} />
           {/* <Route exact path="/hats" component={Hats} /> */}
-          <Route  path="/shop" component={Shop} />
-          
+          <Route path="/shop" component={Shop} />
+
           <Route exact path="/checkout" component={CheckoutPage} />
           <Route
             exact
